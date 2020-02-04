@@ -1,6 +1,9 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const campsiteRouter = require('./routes/campsiteRouter');
+
+
 
 
 const hostname = 'localhost';
@@ -9,6 +12,8 @@ const port = 3000;
 const app = express();
 app.use(morgan('dev'));
 app.use(bodyParser.json());
+
+app.use('/campsites', campsiteRouter);
 
 app.all('/campsites', (req, res, next) => {
     res.statusCode = 200;
